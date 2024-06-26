@@ -1,0 +1,167 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 4581014 */
+  src: url('iconfont.woff2?t=1718797267808') format('woff2'),
+       url('iconfont.woff?t=1718797267808') format('woff'),
+       url('iconfont.ttf?t=1718797267808') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-meizhuang:before {
+  content: "\e6a6";
+}
+
+.icon-shouji:before {
+  content: "\e853";
+}
+
+.icon-naiping:before {
+  content: "\e7d2";
+}
+
+.icon-tongxinyuan:before {
+  content: "\e868";
+}
+
+.icon-qiche:before {
+  content: "\e623";
+}
+
+.icon-shafa:before {
+  content: "\e621";
+}
+
+.icon-tushu:before {
+  content: "\e603";
+}
+
+.icon-xiezi:before {
+  content: "\e609";
+}
+
+.icon-pingguo:before {
+  content: "\e60d";
+}
+
+.icon-yifu:before {
+  content: "\e62e";
+}
+
+.icon-diannao:before {
+  content: "\e612";
+}
+
+.icon-likefill:before {
+  content: "\e69d";
+}
+
+.icon-like-fill:before {
+  content: "\e869";
+}
+
+.icon-like:before {
+  content: "\e813";
+}
+
+.icon-decoration-worker:before {
+  content: "\e6a2";
+}
+
+.icon-weize:before {
+  content: "\e611";
+}
+
+.icon-decoration-copy:before {
+  content: "\e600";
+}
+
+.icon-decoration-2-B:before {
+  content: "\e601";
+}
+
+.icon-BlueDecoration-right:before {
+  content: "\e688";
+}
+
+.icon-Blue-Decoration-left:before {
+  content: "\e68a";
+}
+
+.icon-sfa-bar-chart-lined:before {
+  content: "\e616";
+}
+
+.icon-line-list:before {
+  content: "\e666";
+}
+
+.icon-line-scan:before {
+  content: "\e66c";
+}
+
+.icon-line-link:before {
+  content: "\e6a0";
+}
+
+.icon-decoration:before {
+  content: "\e6af";
+}
+
+.icon-image:before {
+  content: "\e92e";
+}
+
+.icon-Failed:before {
+  content: "\e631";
+}
+
+.icon-search:before {
+  content: "\e67d";
+}
+
+.icon-loadingfailed:before {
+  content: "\e71e";
+}
+
+.icon-image-failed-filled:before {
+  content: "\e981";
+}
+
+.icon-file-failed:before {
+  content: "\ea2d";
+}
+
+.icon-person:before {
+  content: "\e60c";
+}
+
+.icon-login:before {
+  content: "\e8ef";
+}
+
+.icon-register:before {
+  content: "\e6d6";
+}
+
+.icon-home:before {
+  content: "\e608";
+}
+
+.icon-shoppingcart:before {
+  content: "\eb86";
+}
+
+.icon-arrow-left-bold:before {
+  content: "\e685";
+}
+
+.icon-arrow-right-bold:before {
+  content: "\e687";
+}
+
