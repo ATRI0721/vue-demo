@@ -2,7 +2,7 @@
   <div class="purchase-record">
     <ShowCase
       :contenturl="
-        this.$URL + '/user/' + this.$store.getters.getUserId + '/getPurchases'
+        this.$URL + '/user/' + this.$store.state.user.id + '/getPurchases'
       "
       reverse="true"
       message="还没有购买记录哦~~"

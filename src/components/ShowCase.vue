@@ -6,7 +6,7 @@
     <div v-if="this.products.length === 0" style="color: darkgrey;">
       {{ message }}
     </div>
-    <span v-for="product in products" :key="product.id">
+    <span v-for="product in products" :key="product.id" class="product-card">
       <ProductCard
         :image="product.image"
         :title="product.title"
@@ -91,16 +91,16 @@ export default {
         })
         .catch((error) => console.error(error));
     },
-    createTempProduct() {
-      for (let i = 0; i < this.amount; i++) {
-        this.products.push({
-          title: `Product ${i + 1}`,
-          price: i * 100,
-          image: `https://picsum.photos/230`,
-          id: i,
-        });
-      }
-    },
+    // createTempProduct() {
+    //   for (let i = 0; i < this.amount; i++) {
+    //     this.products.push({
+    //       title: `Product ${i + 1}`,
+    //       price: i * 100,
+    //       image: `https://picsum.photos/230`,
+    //       id: i,
+    //     });
+    //   }
+    // },
   },
 };
 </script>
@@ -111,12 +111,15 @@ export default {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, 230px);
-  justify-content: space-between;
   grid-template-rows: max-content;
+  justify-content: space-around;
   row-gap: 20px;
   padding: 20px;
   min-width: 790px;
   box-sizing: border-box;
   overflow: hidden;
 }
+
+
+
 </style>

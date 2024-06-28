@@ -58,19 +58,19 @@ export default {
       ],
       carouselList: [
         {
-          url: "https://picsum.photos//510/450",
+          url: "https://img.alicdn.com/imgextra/i4/O1CN01fBuzg91Drhu8tfxkn_!!6000000000270-0-tps-480-672.jpg",
           href: "https://www.baidu.com",
         },
         {
-          url: "https://picsum.photos//510/450",
+          url: "https://gw.alicdn.com/imgextra/i4/O1CN01m8HltI1fx1kQ6um3L_!!6000000004072-0-tps-480-672.jpg",
           href: "https://www.baidu.com",
         },
         {
-          url: "https://picsum.photos//510/450",
+          url: "https://img.alicdn.com/imgextra/i2/6000000006884/O1CN01UK7wAH20ivU0ruG6B_!!6000000006884-0-octopus.jpg",
           href: "https://www.baidu.com",
         },
         {
-          url: "https://picsum.photos//510/450",
+          url: "https://img.alicdn.com/imgextra/i3/6000000002984/O1CN01x1gx8m1XuipLk9mEP_!!6000000002984-0-octopus.jpg",
           href: "https://www.baidu.com",
         },
       ],

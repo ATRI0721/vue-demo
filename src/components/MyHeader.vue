@@ -51,17 +51,7 @@ export default {
     };
   },
   methods: {
-    checkLogin() {
-      if (
-        this.$store.getters.getUserId == null ||
-        this.$store.getters.getUserId === "" ||
-        this.$store.getters.getUserId === 0
-      ) {
-        return false;
-      } else {
-        return true;
-      }
-    },
+
     checkPage() {
       if (this.$route.path === "/login") {
         ElMessage(
@@ -77,7 +67,7 @@ export default {
     },
     gotocart() {
       if (this.checkPage()) return;
-      if (this.checkLogin()) {
+      if (this.$store.state.user.login) {
         this.$router.push("/user/cart");
       } else {
         this.dialogVisible = true;
@@ -85,7 +75,7 @@ export default {
     },
     gotouser() {
       if (this.checkPage()) return;
-      if (this.checkLogin()) {
+      if (this.$store.state.user.login) {
         this.$router.push("/user");
       } else {
         this.dialogVisible = true;

@@ -162,9 +162,9 @@ export default {
               if (response.data != -1) {
                 localStorage.setItem("userid", JSON.stringify(response.data));
                 localStorage.setItem("username", this.Form.username);
-                this.$store.commit("setUserName", this.Form.username);
-                this.$store.commit("setUserId", response.data);
-                this.$store.commit("setLoginStatus", true);
+                this.$store.state.user.id = response.data;
+                this.$store.state.user.name = this.Form.username;
+                this.$store.state.user.login = true;
                 this.dialogVisible = true;
               } else {
                 ElMessage.error("用户名已存在, 请重新输入");

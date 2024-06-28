@@ -1,5 +1,5 @@
 <template>
-  <div class="main" v-if="!this.$store.getters.getLoginStatus">
+  <div class="main" v-if="!this.$store.state.user.login">
     <a href="/login" id="login">
       登录<span class="iconfont icon-login"></span>
     </a>
@@ -9,40 +9,43 @@
   </div>
   <a href="" class="main" v-else>
     <img :src="avatar" />
-    {{ this.$store.getters.getUserName }}
+    {{ this.$store.state.user.name }}
   </a>
 </template>
 
 <script>
+
 export default {
   name: "UserComponent",
   data() {
     return {
-      avatar: "",
+      avatar: require("@/assets/logo.png"),
     };
   },
   plugins: [],
-  methods: {},
-  created() {
-    if (localStorage.getItem("username") && localStorage.getItem("userid")) {
-      this.$store.commit("setUserName", localStorage.getItem("username"));
-      this.$store.commit("setUserId", localStorage.getItem("userid"));
-      this.$store.commit("setLoginStatus", true);
+  methods: {
+    checkLogin() {
+      if (localStorage.getItem("username") && localStorage.getItem("userid")) {
+      this.$store.state.user.name = localStorage.getItem("username");
+      this.$store.state.user.id = localStorage.getItem("userid");
+      this.$store.state.user.login = true;
+    }else {
+      localStorage.removeItem("username");
+      localStorage.removeItem("userid");
+      this.$store.state.user.login = false;
+      this.$store.state.user.name = "";
+      this.$store.state.user.id = 0;
     }
-    // this.$store.commit("setUserName", localStorage.getItem("username"));
-    // this.$store.commit("setUserId", localStorage.getItem("userid"));
-    // this.$store.commit("setLoginStatus", true);
+    }
+  },
+  created() {
+    this.checkLogin();
   },
   mounted() {
-    if (this.$store.getters.getLoginStatus) {
-      this.avatar = require("../assets/logo.png");
-    }
+    window.addEventListener("beforeunload", this.checkLogin);
   },
   unmounted() {
-    if (this.$store.getters.getLoginStatus) {
-      localStorage.setItem("username", this.$store.getters.getUserName);
-      localStorage.setItem("userid", this.$store.getters.getUserId);
-    }
+    window.removeEventListener("beforeunload", this.checkLogin);
   },
 };
 </script>

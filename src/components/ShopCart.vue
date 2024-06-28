@@ -112,7 +112,7 @@ export default {
   methods: {
     getProducts() {
       axios
-        .get(this.$URL + "/user/" + this.$store.getters.getUserId + "/getCart")
+        .get(this.$URL + "/user/" + this.$store.state.user.id + "/getCart")
         .then((response) => {
           if (response.data.code == 1) {
             for (let i = 0; i < response.data.cart.length; i++) {
@@ -156,7 +156,7 @@ export default {
       }
       axios
         .post(
-          this.$URL + "/user/" + this.$store.getters.getUserId + "/updateCart",
+          this.$URL + "/user/" + this.$store.state.user.id + "/updateCart",
           {
             cart: productdatas,
           }
@@ -168,7 +168,7 @@ export default {
     purchase() {
       axios
         .post(
-          this.$URL + "/user/" + this.$store.getters.getUserId + "/purchase",
+          this.$URL + "/user/" + this.$store.state.user.id + "/purchase",
           {
             cart: this.productIds,
           }

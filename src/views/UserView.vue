@@ -59,7 +59,7 @@ export default {
     },
   },
   created() {
-    if (!this.$store.getters.getLoginStatus) {
+    if (!this.$store.state.user.login) {
       this.$router.push("/login");
     }
   },

@@ -4,7 +4,7 @@
       <el-avatar :size="80" :src="imageurl" style="margin: 0 30px" />
       <div class="name">
         <span>我的账号</span>
-        <span>{{ this.$store.getters.getUserName }}</span>
+        <span>{{ this.$store.state.user.name }}</span>
       </div>
       <span></span>
       <el-button type="default" size="large" style="margin: 40px" @click="loginDialogVisible = true">退出登陆</el-button>
@@ -14,7 +14,7 @@
         <h3>为你推荐</h3>
       </div>
       <ShowCase
-        :contenturl="this.$URL + '/user/' + this.$store.getters.getUserId"
+        :contenturl="this.$URL + '/user/' + this.$store.state.user.id"
         :amount="6"
       />
     </div>
@@ -52,9 +52,9 @@ export default {
   methods: {
     quit() {
       this.loginDialogVisible = false;
-      this.$store.commit("setUserName", "");
-      this.$store.commit("setUserId", "");
-      this.$store.commit("setLoginStatus", false);
+      this.$store.state.user.id = 0;
+      this.$store.state.user.name = "";
+      this.$store.state.user.login = false;
       localStorage.removeItem("userid");
       localStorage.removeItem("username");
       this.$router.push("/");

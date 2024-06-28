@@ -83,7 +83,7 @@ export default {
             return false;
           }else{
             localStorage.setItem("userid", response.data);
-            this.$store.commit("setUserId", response.data);
+            this.$store.state.user.id = response.data;
             return true;
           }
       })
@@ -98,8 +98,8 @@ export default {
             return false;
           }
           localStorage.setItem("username", this.Form.username);
-          this.$store.commit("setUserName", this.Form.username);
-          this.$store.commit("setLoginStatus", true);
+          this.$store.state.user.name = this.Form.username;
+          this.$store.state.user.login = true;
           this.$router.push("/");
         } else {
           return false;
@@ -110,6 +110,11 @@ export default {
       this.$router.push("/register");
     },
   },
+  created(){
+    if(this.$store.state.user.login){
+      this.$router.push("/");
+    }
+  }
 };
 </script>
 

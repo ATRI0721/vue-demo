@@ -12,7 +12,7 @@
         <img src="../assets/right.png" />
       </div>
       <div class="showcase">
-        <ShowCase :amount= "20" :contenturl= "this.$URL + '/user/0'" :bgc="'e4e4e4'"/>
+        <ShowCase :amount= "20" :contenturl="`${this.$URL}/user/${this.$store.state.user.id}`" :bgc="'e4e4e4'"/>
       </div>
     </div>
   </div>

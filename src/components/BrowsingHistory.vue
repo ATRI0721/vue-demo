@@ -2,7 +2,7 @@
   <div class="browsing-history">
     <ShowCase
       :contenturl="
-        this.$URL + '/user/' + this.$store.getters.getUserId + '/getClicks'
+        this.$URL + '/user/' + this.$store.state.user.id + '/getClicks'
       "
       reverse="true"
       message="还没有浏览记录哦~~"
