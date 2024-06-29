@@ -24,6 +24,27 @@
       </div>
     </div>
   </div>
+  <el-dialog v-model="dialogVisible" title="提示" width="450px" top="42vh">
+    <span style="font-size: 18px; margin-top: 10px"
+      >你还没有登录，是否前往登录？</span
+    >
+    <template #footer>
+      <div class="dialog-footer">
+        <div style="display: flex; justify-content: space-evenly; width: 100%">
+          <el-button @click="dialogVisible = false">取消</el-button>
+          <el-button
+            type="primary"
+            @click="
+              dialogVisible = false;
+              $router.push('/login');
+            "
+            style="text-decoration: none; color: #fff"
+            >登录
+          </el-button>
+        </div>
+      </div>
+    </template>
+  </el-dialog>
 </template>
 
 <script>
@@ -40,6 +61,7 @@ export default {
       price: "",
       id: "",
       num: 1,
+      dialogVisible: false,
     };
   },
   methods: {
@@ -57,14 +79,11 @@ export default {
         .catch();
     },
     addToCart() {
-      const url =
-        this.$URL +
-        "/user/" +
-        this.$store.getters.getUserId +
-        "/addCart/" +
-        this.id +
-        "/" +
-        this.num;
+      if (!this.$store.state.user.login) {
+        this.dialogVisible = true;
+        return;
+      }
+      const url = `${this.$URL}/user/${this.$store.state.user.id}/addCart/${this.id}/${this.num}`;
       axios
         .get(url)
         .then((response) => {
@@ -73,7 +92,7 @@ export default {
               message: "添加成功",
               type: "success",
             });
-          }else{
+          } else {
             ElMessage({
               message: "重复添加",
               type: "error",

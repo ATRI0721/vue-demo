@@ -110,7 +110,7 @@ export default {
     };
   },
   methods: {
-    getProducts() {
+    async getProducts() {
       axios
         .get(this.$URL + "/user/" + this.$store.state.user.id + "/getCart")
         .then((response) => {
@@ -131,8 +131,9 @@ export default {
       this.productIds.splice(index, 1);
       this.quantities.splice(index, 1);
       this.deleteDialogVisible = false;
+      this.updataCart();
     },
-    getCart() {
+    async getCart() {
       for (let i = 0; i < this.productIds.length; i++) {
         axios
           .get(this.$URL + "/product/" + this.productIds[i])
@@ -180,6 +181,7 @@ export default {
             this.cart = [];
             this.productIds = [];
             this.quantities = [];
+            this.updataCart();
           } else {
             this.$message.error(response.data.msg);
           }

@@ -6,7 +6,7 @@
     <div v-if="this.products.length === 0" style="color: darkgrey;">
       {{ message }}
     </div>
-    <span v-for="product in products" :key="product.id" class="product-card">
+    <span v-for="product in products" :key="product.id">
       <ProductCard
         :image="product.image"
         :title="product.title"

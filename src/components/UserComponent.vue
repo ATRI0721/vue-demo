@@ -7,7 +7,7 @@
       注册<span class="iconfont icon-register"></span>
     </a>
   </div>
-  <a href="" class="main" v-else>
+  <a href="/user" class="main" v-else>
     <img :src="avatar" />
     {{ this.$store.state.user.name }}
   </a>

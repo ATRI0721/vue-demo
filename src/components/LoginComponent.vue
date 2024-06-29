@@ -33,21 +33,16 @@
         </el-form>
       </div>
       <div class="button">
-        <el-button type="default" @click="register">
-          Register
-        </el-button>
-        <el-button type="primary" @click="submitForm">
-          Submit
-        </el-button>
+        <el-button type="default" @click="register"> Register </el-button>
+        <el-button type="primary" @click="submitForm"> Submit </el-button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
-import { ElMessage } from 'element-plus';
-
+import axios from "axios";
+import { ElMessage } from "element-plus";
 
 export default {
   name: "LoginComponent",
@@ -64,43 +59,59 @@ export default {
       },
       rules: {
         username: [
-          { required: true, message: "Please enter your username", trigger: "blur" },
-          { min: 3, max: 10, message: "Username must be 3 to 10 characters", trigger: "blur" },
+          {
+            required: true,
+            message: "Please enter your username",
+            trigger: "blur",
+          },
+          {
+            min: 3,
+            max: 10,
+            message: "Username must be 3 to 10 characters",
+            trigger: "blur",
+          },
         ],
         pass: [
-          { required: true, message: "Please enter your password", trigger: "change" },
-          { min: 6, max: 16, message: "Password must be 6 to 16 characters", trigger: "blur" },
+          {
+            required: true,
+            message: "Please enter your password",
+            trigger: "change",
+          },
+          {
+            min: 6,
+            max: 16,
+            message: "Password must be 6 to 16 characters",
+            trigger: "blur",
+          },
         ],
       },
     };
   },
   methods: {
-    checkUser() {
-      axios
-      .post(this.$URL + '/user/login', { username: this.Form.username , password: this.Form.pass })
-      .then(response => {
-          if(response.data == -1){
-            return false;
-          }else{
-            localStorage.setItem("userid", response.data);
-            this.$store.state.user.id = response.data;
-            return true;
-          }
-      })
-      .catch();
-      return true;
-    },
-    submitForm() {
+    checkUser() {},
+    async submitForm() {
       this.$refs.formRef.validate((valid) => {
         if (valid) {
-          if (!this.checkUser()) {
-            ElMessage.error("Username or password is incorrect");
-            return false;
-          }
-          localStorage.setItem("username", this.Form.username);
-          this.$store.state.user.name = this.Form.username;
-          this.$store.state.user.login = true;
-          this.$router.push("/");
+          axios
+            .post(this.$URL + "/user/login", {
+              username: this.Form.username,
+              password: this.Form.pass,
+            })
+            .then((response) => {
+              console.log(response.data);
+              if (response.data.code == "-1") {
+                ElMessage.error("Username or password is incorrect");
+                return false;
+              } else {
+                localStorage.setItem("userid", response.data.id);
+                this.$store.state.user.id = response.data.id;
+                localStorage.setItem("username", this.Form.username);
+                this.$store.state.user.name = this.Form.username;
+                this.$store.state.user.login = true;
+                this.$router.push("/");
+              }
+            })
+            .catch();
         } else {
           return false;
         }
@@ -110,11 +121,11 @@ export default {
       this.$router.push("/register");
     },
   },
-  created(){
-    if(this.$store.state.user.login){
+  created() {
+    if (this.$store.state.user.login) {
       this.$router.push("/");
     }
-  }
+  },
 };
 </script>
 
@@ -154,11 +165,11 @@ export default {
 }
 
 .form {
-    height: 90px;
-    width: 100%;
-    box-sizing: border-box;
-    padding-right: 30px;
-    margin-right: 30px;
+  height: 90px;
+  width: 100%;
+  box-sizing: border-box;
+  padding-right: 30px;
+  margin-right: 30px;
 }
 
 .button {

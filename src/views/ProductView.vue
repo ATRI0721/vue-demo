@@ -4,7 +4,7 @@
     <div class="container">
       <ProductDetail />
       <h1><i class="iconfont icon-likefill"></i>猜你喜欢</h1>
-      <ShowCase :contenturl="`${this.$URL}/product/${this.$store.getters.getUserId}/${id}`" :amount="4"/>
+      <ShowCase :contenturl="`${this.$URL}/product/${this.$store.state.user.id}/${id}`" :amount="4"/>
     </div>
   </div>
 </template>

@@ -12,7 +12,7 @@
         >个人中心<span class="iconfont icon-person"></span
       ></span>
     </div>
-    <el-dialog v-model="dialogVisible" title="提示" width="500" top="40vh">
+    <el-dialog v-model="dialogVisible" title="提示" width="450px" top="42vh">
       <span style="font-size: 18px; margin-top: 10px"
         >你还没有登录，是否前往登录？</span
       >
